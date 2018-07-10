@@ -29,17 +29,17 @@ def create_new_path(entry, destFolder):
         ]
 # --------------------------------------------------
 # Take the API token from the cmd arguments and start
-if( len(sys.argv) ):
-    print "missing argument - Dropbox API token"
+if( len(sys.argv) < 2 ):
+    print("missing argument - Dropbox API token")
     sys.exit(1)
 token = sys.argv[1]
 srcFolder = '/Camera Uploads'
 destFolder = '/Photos'
 maxItemsPerBatch = 200
-dbx = dropbox.Dropbox(token)
-dbx.users_get_current_account()
 timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
+dbx = dropbox.Dropbox(token)
+print (dbx.users_get_current_account())
+print
 # First collect all items (recursively) from the source folder,
 # following the cursor as long as there's anything left
 
