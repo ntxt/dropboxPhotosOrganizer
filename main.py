@@ -33,8 +33,8 @@ def unique_items( batch ):
         if(path in index):
             occurenceNo = index[path]
             newpath = re.sub(
-                r"\.(.*)$", 
-                "-%s.\1" % occurenceNo, 
+                r"\.([^.]+)$", 
+                "-%s.\\1" % occurenceNo, 
                 item.to_path
             )
             index[path] += 1
